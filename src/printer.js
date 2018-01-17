@@ -173,9 +173,8 @@ function calculatePageHeight(pages, margins) {
 	var fixedMargins = fixPageMargins(margins || 40);
 	var height = fixedMargins.top + fixedMargins.bottom;
 	pages.forEach(function (page) {
-		page.items.forEach(function (item) {
-			height += getItemHeight(item);
-		});
+		var lastItem = page.items[page.items.length - 1];
+		height += lastItem.item.y + getItemHeight(lastItem);
 	});
 	return height;
 }
